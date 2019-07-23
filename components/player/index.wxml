@@ -1,0 +1,62 @@
+<view>
+    <view class="player" v-show="playlist.length>0">
+        <view class="normal-player" wx:if="fullScreen">
+            <view class="background">
+                <image src="{{classic.imageUrl}}" style="width: 100%"/>
+            </view>
+            <view class="top">
+                <view class="title">{{classic.title || '暂无正在播放歌曲'}}</view>
+                <view class="subtitle">{{currentSong.singer}}</view>
+            </view>
+            <swiper class="middle" style="height: 700rpx" bindchange="changeDot">
+                <swiper-item class="middle-l" style="overflow: visible">
+                    <view class="cd-wrapper" ref="cdWrapper">
+                        <view class="cd {{cdCls}}">
+                            <image src="{{classic.imageUrl}}" alt="" class="image"/>
+                        </view>
+                    </view>
+                    <view class="currentLyricWrapper">{{playingLyric}}</view>
+                </swiper-item>
+                <swiper-item class="middle-r">
+                    <scroll-view class="lyric-wrapper" scroll-y scroll-into-view="line{{toLineNum}}" scroll-with-animation>
+                        <view v-if="currentLyric">
+                            <view ref="lyricLine"
+                                  id="line{{index}}"
+                                  class="text {{currentLineNum == index ? 'current': '' }}"
+                                  wx:for="{{currentLyric.lines}}" wx:key="">{{item.txt}}
+                            </view>
+                        </view>
+                        <view wx:if="{{!currentLyric}}">
+                            <view class="text current">暂无歌词</view>
+                        </view>
+                    </scroll-view>
+                </swiper-item>
+            </swiper>
+            <view class="dots-wrapper">
+                <view class="dots {{currentDot==index?'current':''}}" wx:for="{{dotsArray}}" wx:key=""></view>
+            </view>
+            <view class="bottom">
+                <view class="progress-wrapper">
+                    <text class="time time-l">{{currentTime}}</text>
+                    <view class="progress-bar-wrapper">
+                        <progress-bar percent="{{percent}}"></progress-bar>
+                    </view>
+                    <text class="time time-r">{{duration}}</text>
+                </view>
+                <view class="operators">
+                    <view class="icon i-left">
+                        <image class="player-img" bindtap="changeMod"
+                               src="{{!isLoop?notLoopIcon:loopIcon}}" />
+                    </view>
+                    <view class="icon i-center">
+                        <image class="player-img" bindtap="togglePlaying"
+                               src="{{!playing?playSrc:pauseSrc}}" />
+                    </view>
+                    <view class="icon i-right">
+                        <v-like class="player-like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

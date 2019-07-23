@@ -1,0 +1,16 @@
+<!-- components/like/index.wxml -->
+<!--
+<view bind:tap="onLike" class="container">
+    <image src="{{like?yesSrc:noSrc}}" />
+    <text>{{count}}</text>
+</view>-->
+
+<view class="container">
+    <v-button class="" bindmysubmit="submitInfo" form-type="submit">
+        <image class="" style="width:{{imgWidth}}rpx;height:{{imgHeight}}rpx" slot="img" src="{{like?yesSrc:noSrc}}"/>
+    </v-button>
+    <!--<button form-type="submit">
+    </button>-->
+    <text>{{count}}</text>
+</view>
+

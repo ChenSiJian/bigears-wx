@@ -1,0 +1,59 @@
+<view class="container">
+    <view class="title">
+        <view></view>
+        <view> {{classic.title}}</view>
+        <view class="like-container">
+            <v-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
+        </view>
+    </view>
+    <view class="header">
+        <view class="author">推荐者: {{userInfo.nickName}}</view>
+        <view class="author">大耳朵一乐</view>
+        <view class="author">{{pubtimeStr}}</view>
+        <view></view>
+    </view>
+    <view class="essay-info" style="min-height: {{height-155}}px;">
+        <view class="detail">
+            <!-- <import src="/lib/wxParse/wxParse.wxml" />
+             <template is="wxParse" data="{{wxParseData:essayDetail.nodes}}" />-->
+            <rich-text nodes="{{htmlStr}}"></rich-text>
+        </view>
+    </view>
+    <view class="comment">
+        <view class="comment-header">
+            <view class="left">精选留言</view>
+            <view class="right" bindtap="onJumpToAddComment">写留言</view>
+        </view>
+        <block wx:for="{{commentsList}}" wx:key="">
+            <view class='commentsItem-container'>
+                <image class="commentsItem-face" src='{{item.avatar}}'></image>
+                <view class="commentsItem-content-all">
+                    <view class="nicknameAndZan">
+                        <label class='nickname'>{{item.nickname}}</label>
+                        <v-zan class="zan" bind:zan="onZan" commentId="{{item.id}}" count="{{item.likeCounts}}"></v-zan>
+                    </view>
+                    <view class="content">
+                        <rich-text nodes="{{item.comment}}"></rich-text>
+                    </view>
+                    <view wx:if="{{item.reply != null}}" class="line">大耳朵</view>
+                    <view wx:if="{{item.reply != null}}" class="content">
+                        <rich-text nodes="{{item.reply}}"></rich-text>
+                    </view>
+                </view>
+                <!--<view class='container-comments'>
+                    <image class="face-comments" src='{{item.avatar}}'></image>
+                    <view class='nickname-comments'>
+                        <label class='nickname-lbl'>@{{item.nickname}}</label>
+                        于
+                        <label class='date-lbl'>{{item.timeAgoStr}}</label>
+                        <block>
+                            留言：
+                        </block>
+                    </view>
+                </view>
+                <view class=''></view>-->
+            </view>
+        </block>
+    </view>
+
+</view>

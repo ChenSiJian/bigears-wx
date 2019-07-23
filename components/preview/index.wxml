@@ -1,0 +1,8 @@
+<view catch:tap="onTap" class="container">
+  <view class="head">
+    <v-tag text="{{typeText}}" tag-class="tag" />
+    <v-like class="like" read-only="{{true}}" like="{{true}}" count="{{classic.likeCounts}}" />
+  </view>
+  <image class="{{classic.type==100?'music-img':'other-img'}}" mode="aspectFill" src="{{classic.imageUrl}}"></image>
+  <view class="text">{{classic.title}}</view>
+</view>

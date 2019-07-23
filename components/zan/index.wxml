@@ -1,0 +1,4 @@
+<view bind:tap="onZan" class="container">
+    <image src="{{zan?yesSrc:noSrc}}" />
+    <text>{{count}}</text>
+</view>

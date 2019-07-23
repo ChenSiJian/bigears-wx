@@ -1,0 +1,83 @@
+.userItem{
+    height:80rpx;
+    padding:5px 10px;
+    display: flex;
+    border-bottom:1px solid #ddd;
+}
+.pic{
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 10px;
+}
+.userItem .name{
+    font-size: 15px;
+    padding:5px 0;
+    font-weight: bold;
+    flex:2;
+}
+.userItem .time{
+    font-size: 13px;
+}
+
+.message{
+    color: gray;
+    font-size: 16px;
+    width: 580rpx;
+    margin-top:10px;
+}
+.messagetime{
+    color:gray;
+    font-size:13px;
+}
+
+.tips{
+    margin-top:50px;
+    color: gray;
+    text-align: center;
+}
+.flex{
+    display: flex;
+}
+.title{
+    font-family: "微软雅黑";
+    font-size: 32rpx;
+}
+.item-avatar-md{
+    display: flex;
+    padding: 20rpx 30rpx;
+    border-bottom: 1rpx solid #eee;
+    cursor: pointer;
+    position:relative;
+}
+.item-avatar-md image{
+    float: left;
+    width: 85rpx;
+    height: 85rpx;
+    box-sizing: border-box
+}
+
+.item-avatar-md .marks{
+    position: absolute;
+    top: 0px;
+    left: 90rpx;
+    width: 40rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    background: red;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    font-size: 28rpx;
+}
+
+.item-avatar-md .item-time{
+    position: absolute;
+    right: 20rpx;
+}
+.text_box{
+    display: flex;
+    flex-direction: column;
+}
+.item-avatar-md .item-text{
+    padding-left: 10px;
+}

@@ -1,0 +1,11 @@
+/* pages/classic-detail/classic-detail.wxss */
+page{
+    height: 100%;
+    background-color: #d4e9c8;
+}
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "v-player":"/components/player/index",
+    "v-detail":"/components/essayDetail/index"
+  }
+}

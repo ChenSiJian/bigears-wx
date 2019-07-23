@@ -1,0 +1,190 @@
+<view class="container">
+    <scroll-view scroll-y="true" scroll-top="10000000000" scroll-into-view="{{toView}}" bindtap="tapscroll"
+                 style="height:{{height-50}}px;background:#eee" animation="{{animation_2}}">
+        <view wx:for="{{messages}}" wx:for-item="i" wx:key="i.id">
+            <view id="msg{{index}}" wx:if="{{i.isMe}}" class='my_right new_txt'>
+                <view class='time_right' wx:if='{{i.msgTime && i.msgTime != null}}'>
+                    {{i.msgTime}}
+                </view>
+                <view class='page_r' wx:if='{{i.msg}}'>
+                    <view class='new_txt' wx:if="{{i.chatType==1 || i.chatType==3}}">
+                        <view class='new_txt_my'>
+                            <view class='arrow'>
+                                <em></em>
+                                <span></span>
+                            </view>
+                            <rich-text wx:if="{{i.chatType==1}}" style="padding:0;margin:0;width:auto;"
+                                       nodes="{{i.msg}}"></rich-text>
+
+                            <view wx:if="{{i.chatType==3}}" class='new_txt_my_audio' data-key="{{index}}" bindtap="my_audio_click"
+                                  data-url="{{i.msg}}">
+                                <image wx:if="{{i.voicePlay==false}}" class='my_audio' src="images/yuyin@right.png"></image>
+                                <image wx:if="{{i.voicePlay==true}}" class='my_audio' src="images/yuyin-play@right.gif"></image>
+                            </view>
+                        </view>
+                    </view>
+                    <image wx:if="{{i.chatType==2}}" data-url="{{i.msg}}" bindtap="previewImg"
+                           style="max-width:250px;vertical-align:middle;margin:0 3px;"
+                           mode="aspectFit" src="{{i.msg}}"></image>
+                    <open-data class='new_img' type="userAvatarUrl"></open-data>
+                </view>
+                <!--<image wx:if="{{i.audio}}" class="voice-play" data-url="{{i.audio}}"
+                       bindtap="my_audio_click" src="{{voicePalyImg_right}}"></image>
+                <view class='page_r'  wx:if='{{i.audio}}' bindtap="my_audio_click" data-url="{{i.audio}}">
+                    <view class='new_txt_my_audio' style=' width:{{i.length}}px'>
+                        <image class='my_audio' src="{{voicePalyImg_right}}"></image>
+                    </view>
+                    <span class='_span'></span>
+                    <image class="new_img" src="{{meAvatar}}"></image>
+                </view>-->
+            </view>
+
+
+            <!--<view class="padding clearfix" wx:if="{{i.isMe}}">
+
+                <image class="right-Avatar padding_half" src="{{meAvatar}}"></image>
+                <view class="right-Triangle"></view>
+                <view class="right-message padding_half">
+                    <view style="display:inline-block;">
+                        <rich-text wx:if="{{i.chatType==1}}" style="padding:0;margin:0;width:auto;" nodes="{{i.msg}}"></rich-text>
+                        &lt;!&ndash;<text wx:if="{{i.chatType==1}}" style="padding:0;margin:0;width:auto;">{{i.msg}}</text>&ndash;&gt;
+                        <image wx:if="{{i.chatType==2}}" data-url="{{i.msg}}" bindtap="previewImg"  style="max-width:150px;max-height:120px;vertical-align:middle;margin:0 3px;" src="{{i.msg}}"></image>
+                    </view>
+                    <image wx:if="{{i.audio}}" class="voice-play" data-url="{{i.audio}}" bindtap="my_audio_click" src="{{voicePalyImg_right}}"></image>
+                    <image wx:if="{{i.imgList}}" style="max-width:150px;max-height:120px" src="{{i.imgList}}"></image>
+                    <map id="map" wx:if="{{i.map}}" style="width: 220px; height: 160px;"
+                         latitude="{{latitude}}"
+                         longitude="{{longitude}}"
+                         scale="16"
+                         markers="{{markers}}"
+                         covers="{{covers}}">
+                    </map>
+                </view>
+            </view>-->
+            <!--<block wx:if="{{!i.isMe}}">-->
+            <view id="msg{{index}}" wx:if="{{!i.isMe}}" class='you_left'>
+                <view class='time' wx:if='{{i.msgTime && i.msgTime != null}}'>
+                    {{i.msgTime}}
+                </view>
+                <view class='page_l' wx:if='{{i.msg}}'>
+                    <image class="new_img" src="{{friendAvatar}}"></image>
+                    <view class='new_txt' wx:if="{{i.chatType==1 || i.chatType==3}}">
+                        <view class='new_txt_you'>
+                            <view class='arrow'>
+                                <em></em>
+                                <span></span>
+                            </view>
+                            <rich-text wx:if="{{i.chatType==1}}" style="padding:0;margin:0;width:auto;"
+                                       nodes="{{i.msg}}"></rich-text>
+                            <view wx:if="{{i.chatType==3}}" data-key="{{index}}" class='new_txt_my_audio' bindtap="my_audio_click"
+                                  data-url="{{i.msg}}">
+                                <image wx:if="{{i.voicePlay==false}}" class='my_audio' src="images/yuyin@left.png"></image>
+                                <image wx:if="{{i.voicePlay==true}}" class='my_audio' src="images/yuyin-play@left.gif"></image>
+
+                            </view>
+                        </view>
+                    </view>
+                    <image wx:if="{{i.chatType==2}}" data-url="{{i.msg}}" bindtap="previewImg"
+                           style="max-width:250px;vertical-align:middle;margin:0 3px;"
+                           mode="aspectFit" src="{{i.msg}}"></image>
+                </view>
+                <!--<image wx:if="{{i.audio}}" class="voice-play" data-url="{{i.audio}}"
+                       bindtap="my_audio_click" src="{{voicePalyImg_right}}"></image>
+                <view class='page_l'  wx:if='{{i.audio}}' bindtap="my_audio_click" data-url="{{i.audio}}">
+                    <view class='new_txt_my_audio' style=' width:{{i.length}}px'>
+                        <image class='my_audio' src="{{voicePalyImg_right}}"></image>
+                    </view>
+                    <span class='_span'></span>
+                    <image class="new_img" src="{{meAvatar}}"></image>
+                </view>-->
+            </view>
+            <!--</block>-->
+            <!--<view class="padding clearfix" wx:if="{{!i.isMe}}">
+                <image class="left-Avatar padding_half" src="{{friendAvatar}}"></image>
+                <view class="left-Triangle"></view>
+                <view class="left-message padding_half">
+                    <view style="display:inline-block;">
+                        <rich-text wx:if="{{i.chatType==1}}" style="padding:0;margin:0;width:auto;" nodes="{{i.msg}}"></rich-text>
+                        &lt;!&ndash;<text wx:if="{{i.chatType==1}}" style="padding:0;margin:0;width:auto;">{{i.msg}}</text>&ndash;&gt;
+                        <image wx:if="{{i.chatType==2}}"  style="width:21px;height:21px;vertical-align:middle;margin:0 3px;" src="{{i.msg}}"></image>
+                    </view>
+                </view>
+            </view>-->
+        </view>
+        <view class="weui-icon_success"></view>
+    </scroll-view>
+    <view class="inputItem wa-row" style="max-height:150px;">
+        <!--<view class="icon" style="height:32px;line-height:32px" bindtap="getvoice"></view>-->
+        <image class="text-center icon" bindtap="voice_click" src="{{voiceOrkeyboardImg}}"></image>
+        <!--<view class="padding_half" style="flex:1; height:32px; line-height:32px;border-bottom:1px solid gray;">
+            <input placeholder="请输入消息" value="{{msg}}" class="my-textarea"  cursor-spacing="10px" bindfocus="inputFocus" bindblur="inputBlur" bindinput="sendMessage"/>
+        </view>-->
+        <view class="textarea-wrp">
+            <button wx:if="{{voice_show}}" class="voice-button" bindtouchstart="voice_ing_start"
+                    bindtouchend="voice_ing_end" plain="{{true}}">按住说话，1分钟内
+            </button>
+            <textarea wx:if="{{!voice_show}}" style='{{(msg !="" || focus)?"border-bottom: 1px solid #88DD4B;":""}}'
+                      placeholder="请输入消息"
+                      class="my-input-text" value="{{msg}}"
+                      cursor-spacing="6px" bindfocus="inputFocus" bindblur="inputBlur"
+                      bindinput="bindKeyInput" focus="{{focus}}" show-confirm-bar="{{false}}" name="textarea">
+            </textarea>
+            <!--<input wx:if="{{!voice_show}}" type="text" class="my-input-text" style='{{focus?"border-bottom: 1px solid #88DD4B;":""}}' adjust-position='{{true}}'
+                   cursor-spacing='5' bindinput="bindKeyInput" value='{{msg}}' focus='{{focus}}'
+                   bindblur='inputBlur' bindfocus="inputFocus" confirm-type="done" placeholder="请输入您要咨询的问题"/>-->
+
+        </view>
+        <!--<view class="text-center icon ion-happy-outline" style="height:32px;line-height:32px" bindtap="emotionBtn"></view>-->
+        <image class="icon" src="images/emoji.png" bindtap="emotionBtn"></image>
+        <button wx:if="{{sendBtnStatus}}" class="send-button" bindtap="msgSubmit"> 发送</button>
+        <image wx:else class="icon" style="margin-left:6rpx;" src="images/plus.png" bindtap="moreBtn"></image>
+        <!--<view class="text-center icon {{ more }} text-center" style="margin-left:5px;height:32px;line-height:32px" bindtap="elseBtn"></view>-->
+    </view>
+    <view id="elsePanel" wx:if="{{moreBox}}" animation="{{animation}}">
+        <view class="wa-row">
+
+            <image class="moreImage" bindtap="chooseImg" src="/images/image.png"></image>
+            <image class="moreImage" bindtap="getlocat" src="/images/map.png"></image>
+
+        </view>
+
+    </view>
+
+    <view id="emotionPanel" wx:if="{{emotionBox}}" animation="{{animation}}">
+        <swiper class="middle" style="height: 440rpx" bindchange="changeDot">
+            <swiper-item class="middle-l" style="overflow: visible">
+                <view class="emotionPanel" animation="{{animation}}">
+                    <image wx:for="{{ emotions1 }}" wx:key="item.id" src="{{item.src}}" class="emotion"
+                           data-name="{{item.name}}"
+                           bindtap="chooseEmotion"></image>
+                </view>
+
+            </swiper-item>
+            <swiper-item class="middle-r">
+                <view class="emotionPanel" animation="{{animation}}">
+                    <image wx:for="{{ emotions2 }}" wx:key="item.id" src="{{item.src}}" class="emotion"
+                           data-name="{{item.name}}"
+                           bindtap="chooseEmotion"></image>
+                </view>
+            </swiper-item>
+            <swiper-item class="middle-r">
+                <view class="emotionPanel" animation="{{animation}}">
+                    <image wx:for="{{ emotions3 }}" wx:key="item.id" src="{{item.src}}" class="emotion"
+                           data-name="{{item.name}}"
+                           bindtap="chooseEmotion"></image>
+                </view>
+            </swiper-item>
+            <swiper-item class="middle-r">
+                <view class="emotionPanel" animation="{{animation}}">
+                    <image wx:for="{{ emotions4 }}" wx:key="item.id" src="{{item.src}}" class="emotion"
+                           data-name="{{item.name}}"
+                           bindtap="chooseEmotion"></image>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="dots-wrapper">
+            <view class="dots {{currentDot==index?'current':''}}" wx:for="{{dotsArray}}" wx:key=""></view>
+        </view>
+    </view>
+
+</view>

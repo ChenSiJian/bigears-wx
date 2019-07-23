@@ -1,0 +1,76 @@
+<import src="../../utils/template/tpl.wxml"/>
+<view class="container">
+    <view class="title">{{title}}</view>
+
+    <view class="textarea-wrp">
+        <textarea placeholder="请输入评论,您的头像、昵称、评论内容将对所有用户可见" value="{{commentStr}}" bindfocus="inputFocus"
+                  bindinput="sendMessage" bindblur="inputBlur" show-confirm-bar="{{false}}"
+                  focus="{{focus}}" name="textarea" style="height: 4em"/>
+        <image class="emoji" src="images/emoji.png" bindtap="emotionBtn"></image>
+    </view>
+    <!--<rich-text class="tt" nodes="{{htmlStr}}"></rich-text>
+
+       <view>
+           <template is="imgTplBak" data="{{emojiMsg}}"></template>
+       </view>-->
+    <!--<view class="emotionPanel" wx:if="{{emotionBox}}" animation="{{animation}}">
+        <image wx:for="{{ emotions }}" wx:key="item.id" src="{{item.src}}" class="emotion" data-name="{{item.name}}"
+               bindtap="chooseEmotion"></image>
+    </view>-->
+    <swiper class="middle" wx:if="{{emotionBox}}" style="height: 320rpx" bindchange="changeDot">
+        <swiper-item class="middle-l" style="overflow: visible">
+            <view class="emotionPanel" animation="{{animation}}">
+                <image wx:for="{{ emotions1 }}" wx:key="item.id" src="{{item.src}}" class="emotion"
+                       data-name="{{item.name}}"
+                       bindtap="chooseEmotion"></image>
+            </view>
+
+        </swiper-item>
+        <swiper-item class="middle-r">
+            <view class="emotionPanel" animation="{{animation}}">
+                <image wx:for="{{ emotions2 }}" wx:key="item.id" src="{{item.src}}" class="emotion"
+                       data-name="{{item.name}}"
+                       bindtap="chooseEmotion"></image>
+            </view>
+        </swiper-item>
+        <swiper-item class="middle-r">
+            <view class="emotionPanel" animation="{{animation}}">
+                <image wx:for="{{ emotions3 }}" wx:key="item.id" src="{{item.src}}" class="emotion"
+                       data-name="{{item.name}}"
+                       bindtap="chooseEmotion"></image>
+            </view>
+        </swiper-item>
+        <swiper-item class="middle-r">
+            <view class="emotionPanel" animation="{{animation}}">
+                <image wx:for="{{ emotions4 }}" wx:key="item.id" src="{{item.src}}" class="emotion"
+                       data-name="{{item.name}}"
+                       bindtap="chooseEmotion"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view class="dots-wrapper" wx:if="{{emotionBox}}">
+        <view class="dots {{currentDot==index?'current':''}}" wx:for="{{dotsArray}}" wx:key=""></view>
+    </view>
+
+    <button class="mybutton" bindtap="bindSubmit"> 留言</button>
+    <view class="comment">
+        <block wx:for="{{myCommentList}}" wx:key="">
+            <view class='commentsItem-container'>
+                <image class="commentsItem-face" src='{{item.avatar}}'></image>
+                <view class="commentsItem-content-all">
+                    <view class="nicknameAndZan">
+                        <label class='nickname'>{{item.nickname}}</label>
+                    </view>
+                    <view class="content">
+                        <!--<template is="imgTplBak" data="{{item.comment}}"></template>-->
+                        <rich-text nodes="{{item.comment}}"></rich-text>
+                    </view>
+                    <view class="delete" bindtap="delComment" data-id="{{item.id}}">删除</view>
+                </view>
+            </view>
+        </block>
+    </view>
+
+
+
+</view>

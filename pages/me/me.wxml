@@ -1,0 +1,34 @@
+<view class="container">
+    <view class="profile-info" bindtap="goLogin">
+        <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+        <view class="info">
+            <text class="name">{{userInfo.nickName}}</text>
+        </view>
+    </view>
+
+
+    <view class='user_row'>
+        <view class='user_row_middle'>基本操作</view>
+    </view>
+    <view class='separate'></view>
+    <button open-type='share' data-title="{{userInfo.nickName}}给你分享 大耳朵一乐" plain='{{true}}' class="user_row shareButton">
+        <view class='user_row_left'>分享大耳朵一乐</view>
+        <image class='user_row_right' src='/images/goright.png'></image>
+    </button>
+    <view class='separate'></view>
+    <view class='user_row' bindtap="clearMyStorage">
+        <view class='user_row_left'>清除本地缓存</view>
+        <image class='user_row_right' src='/images/goright.png'></image>
+    </view>
+    <view class='separate'></view>
+
+
+    <view class="like-container">
+        <image class="headline" src="/images/like.png" />
+        <view class="preview-container">
+            <block wx:for="{{classicsList}}" wx:key="">
+                <v-preview bind:tapping="onJumpToDetail" data-index="{{index}}" class="preview" classic="{{item}}" />
+            </block>
+        </view>
+    </view>
+</view>

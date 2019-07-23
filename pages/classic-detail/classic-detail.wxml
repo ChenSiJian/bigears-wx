@@ -1,0 +1,10 @@
+<!--pages/classic-detail/classic-detail.wxml-->
+<view class="container">
+    <view >
+        <v-player wx:if="{{classic.type==100}}" classic="{{classic}}"/>
+    </view>
+    <view style="width: 100%;height: 100%">
+        <v-detail wx:if="{{classic.type==200 || classic.type==300}}" classic="{{classic}}" userInfo="{{userInfo}}"/>
+    </view>
+
+</view>

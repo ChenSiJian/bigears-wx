@@ -1,0 +1,351 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f6f6;
+}
+
+.inputItem{
+}
+.textarea-wrp {
+    margin-top: 16rpx;
+    margin-left: 6rpx;
+}
+.voice-button{
+    width: 506rpx;
+    padding-right: 4rpx;
+    padding-left: 4rpx;
+    margin-right: 6rpx;
+    height: 36px;
+    line-height: 36px;
+}
+.voice-button::after{ border: none; }
+.voice-play{
+    width: 32px;
+    height: 32px;
+}
+
+.my-input-text{
+    height: 34px;
+    line-height: 34px;
+    font-size: 34rpx;
+    width: 512rpx;
+    max-width: 512rpx;
+    /*padding-top: 6px;*/
+}
+.icon{
+    vertical-align: middle;
+    margin-top: 8rpx;
+    width: 64rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+}
+
+.emotion{
+    width:56rpx;
+    height:56rpx;
+    line-height: 56rpx;
+    margin: 6px;
+}
+.emotionPanel{
+    width: 100%;
+}
+
+.middle {
+    margin-top: 12rpx;
+    width: 620rpx;
+    margin-left: 50rpx;
+    font-size: 0;
+}
+
+.middle .middle-l {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+}
+
+.middle-r {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.dots-wrapper {
+    position: absolute;
+    bottom: 140rpx;
+    height: 30rpx;
+    line-height: 20rpx;
+    text-align: center;
+    width: 100%;
+}
+.dots-wrapper .dots {
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 10rpx;
+    background: rgba(0, 255, 0, 0.5);
+    display: inline-block;
+    margin: 10rpx;
+    margin-top: 0;
+}
+.dots-wrapper .current {
+    width: 40rpx;
+    background: rgba(0,255,0,.8);
+}
+
+.send-button{
+    width: 100rpx;
+    height: 32px;
+    line-height: 32px;
+    font-size: 32rpx;
+    margin-top: 4rpx;
+    padding-left: 8rpx;
+    padding-right: 8rpx;
+    background-color: #07c160;
+    color: #fff;
+}
+
+
+
+/* 聊天 */
+.time {
+    text-align: center;
+    padding: 5rpx 20rpx 5rpx 20rpx;
+    border-radius: 10rpx;
+    display: block;
+    height: 38rpx;
+    line-height: 38rpx;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 20rpx;
+    width: 320rpx;
+    color: white;
+    font-size: 26rpx;
+    background-color: #dedede;
+}
+.time_right {
+    text-align: center;
+    padding: 5rpx 20rpx 5rpx 20rpx;
+    border-radius: 10rpx;
+    display: block;
+    height: 38rpx;
+    line-height: 38rpx;
+    position: relative;
+    margin-left: -60rpx;
+    margin-bottom: 20rpx;
+    width: 320rpx;
+    color: white;
+    font-size: 26rpx;
+    background-color: #dedede;
+}
+
+.my_right {
+    float: right;
+    margin-top: 30rpx;
+    position: relative;
+}
+
+.my_audio {
+    height: 60rpx;
+    width: 60rpx;
+    z-index: 2;
+    position: relative;
+    top: 10rpx;
+    left: 20rpx;
+}
+
+.you_left {
+    float: left;
+    width: 100%;
+    margin-top: 30rpx;
+    position: relative;
+    padding-left: 5rpx;
+}
+
+.new_img {
+    width: 85rpx;
+    height: 85rpx;
+    overflow: hidden;
+}
+
+.page_r {
+    display: flex;
+    float: right;
+    margin-right: 25rpx;
+}
+.page_l {
+    display: flex;
+    float: left;
+    margin-left: 25rpx;
+}
+
+.new_txt {
+    min-width: 380rpx;
+    width: 500rpx;
+    word-break: break-all;
+}
+
+.new_txt_my {
+    border-radius: 7rpx;
+    background: #9fe75a;
+    position: relative;
+    right: 30rpx;
+    min-height: 50rpx;
+    padding: 17rpx 30rpx 17rpx 30rpx;
+    float: right;
+    border: 1px solid #d0d0d0;
+}
+
+.new_txt_my .arrow {
+    position: absolute;
+    z-index: 2;
+    width: 40rpx;
+    right: -38rpx;
+}
+
+.new_txt_my .arrow em {
+    position: absolute;
+    border-style: solid;
+    border-width: 15rpx;
+    border-color: transparent transparent transparent #d0d0d0;
+    top: 1rpx;
+}
+
+.new_txt_my .arrow span {
+    position: absolute;
+    top: 5rpx;
+    border-style: solid;
+    border-width: 15rpx;
+    border-color: transparent transparent transparent #9fe75a;
+}
+
+.new_txt_my_audio {
+    word-break: break-all;
+    border-radius: 7rpx;
+    background: #9fe75a;
+    min-width: 230rpx;
+    max-width: 430rpx;
+    float: right;
+}
+
+.new_txt_you {
+
+    border-radius: 7rpx;
+    min-height: 50rpx;
+    left: 30rpx;
+    background-color: #9fe75a;
+    position: relative;
+    padding: 17rpx 30rpx 17rpx 30rpx;
+    border: 1px solid #d0d0d0;
+    float: left;
+}
+
+.new_txt_you .arrow {
+    position: relative;
+    width: 40rpx;
+    left: -60rpx;
+}
+
+.new_txt_you .arrow em {
+    position: absolute;
+    border-style: solid;
+    border-width: 15rpx;
+    top: 20rpx;
+    border-color: transparent #d0d0d0 transparent transparent;
+}
+
+.new_txt_you .arrow span {
+    position: absolute;
+    top: 20rpx;
+    border-style: solid;
+    border-width: 15rpx;
+    border-color: transparent #9fe75a transparent transparent;
+    left: 2rpx;
+}
+
+.you_content {
+    word-break: break-all;
+    padding: 17rpx 30rpx 17rpx 30rpx;
+}
+
+.my {
+    border-color: transparent transparent transparent #9fe75a;
+}
+
+.you {
+    border-color: transparent #fff transparent transparent;
+}
+
+._span {
+    border-color: #fff transparent transparent;
+    top: -17px;
+}
+
+/* ============聊天结束=============*/
+
+
+.right-Avatar{
+    float:right;
+    width: 85rpx;
+    height: 85rpx;
+}
+
+.right-Triangle{
+    float:right;
+    margin-top: 35rpx;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-left: 12px solid yellowgreen;
+    border-bottom: 8px solid transparent;
+}
+.right-message{
+    float: right;
+    margin-top: 10rpx;
+    line-height: 65rpx;
+    background: yellowgreen;
+    border-radius: 10rpx;
+    font-size: 12px;
+}
+
+.left-Avatar{
+    float:left;
+    width: 85rpx;
+    height: 85rpx;
+}
+.left-Triangle{
+    float:left;
+    margin-top: 35rpx;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-right: 12px solid yellowgreen;
+    border-bottom: 8px solid transparent;
+}
+.left-message{
+    float: left;
+    margin-top: 10rpx;
+    line-height: 65rpx;
+    background: yellowgreen;
+    border-radius: 10rpx;
+    font-size: 12px;
+}
+
+.icon{
+    vertical-align: middle;
+    margin-top: 4px;
+    width:32px;
+    height:32px;
+}
+
+.moreImage{
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border: 1px solid #e3e3e3;
+    border-radius: 10px;
+    background: #f3f3f3;
+    margin: 5px;
+}

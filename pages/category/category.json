@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "v-preview": "/components/preview/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

@@ -1,0 +1,105 @@
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d4e9c8;
+  }
+
+  .classic-img {
+    width: 422rpx;
+    height: 422rpx;
+    margin-top: 60rpx;
+    border-radius: 50%;
+  }
+
+  .player-img {
+    width: 120rpx;
+    height: 120rpx;
+    position: relative;
+    bottom: 270rpx;
+  }
+
+  .tag{
+    width:44rpx;
+    height:128rpx;
+    position: relative;
+    bottom: 160rpx;
+    right: 310rpx;
+  }
+  .content {
+    font-family: 方正兰亭超细黑简体;
+    font-style: italic;
+    font-weight: 600px;
+    font-size: 32rpx;
+    max-width: 550rpx;
+    margin-top: 25rpx;
+  }
+  .rotation {
+    -webkit-transform: rotate(360deg);
+    animation: rotation 12s linear infinite;
+    -moz-animation: rotation 12s linear infinite;
+    -webkit-animation: rotation 12s linear infinite;
+    -o-animation: rotation 12s linear infinite;
+  }
+
+  @-webkit-keyframes rotation {
+    from {
+      -webkit-transform: rotate(0deg);
+    }
+
+    to {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  .myposition {
+    position: relative;
+    bottom: 220rpx;
+  }
+
+  .profile-info {
+    background-color: #afbd9d;
+    color: #f4f4f4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10rpx;
+    font-size: 28rpx;
+  }
+ 
+  .profile-info .avatar {
+    height: 90rpx;
+    width: 90rpx;
+    border-radius: 50%;
+  }
+
+  .profile-info .info {
+    flex: 1;
+    height: 32rpx;
+    padding-left: 11.25rpx;
+    padding-right: 10rpx;
+  }
+
+  .profile-info .name {
+    display: block;
+    height: 32rpx;
+    line-height: 32rpx;
+    color: #fff;
+    font-size: 32rpx;
+  }
+  .playing-lyric-wrapper{
+    position: relative;
+    bottom: 220rpx;
+    width: 80%;
+    margin: 10rpx auto 0 auto;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20rpx;
+  }
+  .playing-lyric-wrapper .playing-lyric{
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 36rpx;
+    color: green;
+    margin-bottom: 10rpx;
+  }

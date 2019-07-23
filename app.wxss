@@ -1,0 +1,17 @@
+@import './layout/wa-ui.wxss';
+
+.padding_half{
+    padding: 10rpx;
+}
+.padding{
+    padding:20rpx;
+}
+.graySpace{
+    padding-left: 40rpx;
+    background: #eee;
+    font-size: 12px;
+    min-height: 30rpx;
+}
+.clearfix{
+    overflow: hidden;
+}

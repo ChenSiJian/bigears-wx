@@ -1,0 +1,24 @@
+<view class="container" hidden="{{hidden}}" >
+    <image class="classic-img {{playing?'rotation':''}}" src="{{img}}" />
+    <image class="player-img" bindtap="onPlay"
+        src="{{!playing?playSrc:pauseSrc}}" />
+    <image class="tag" src="images/music@tag.png" />
+    <view class="myposition profile-info">
+        <image class="avatar" src="{{userInfo.avatar}}"></image>
+        <view class="info">
+            <text class="name">{{userInfo.nickName}}</text>
+        </view>
+        <text wx:if="{{userInfo.gender==1}}" class="name">推荐，他想说:</text>
+        <text wx:else class="name">，她想说:</text>
+    </view>
+
+    <!--<text class="myposition content">{{content}}</text>-->
+    <rich-text class="myposition content" style="margin-top: 20rpx;" nodes="{{contentHtml}}"></rich-text>
+    <view wx:if="{{isShowLyric && currentLyric==null}}" class="playing-lyric-wrapper">
+        <text class="playing-lyric">暂无歌词</text>
+    </view>
+    <view  wx:else class="playing-lyric-wrapper">
+        <text wx:if="{{isShowLyric}}" class="playing-lyric">{{playingLyric}}</text>
+    </view>
+
+</view>

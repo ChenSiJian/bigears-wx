@@ -1,0 +1,70 @@
+<view style='width:100%;height:100%;'>
+
+    <video id="myVideo" src="{{src}}"
+           muted="{{false}}"
+           custom-cache="{{false}}"
+           controls="{{true}}"
+           play-btn-position="center"
+           show-play-btn="{{false}}"
+           show-progress="{{false}}"
+           autoplay="{{true}}"
+           loop="{{false}}"
+           enable-progress-gesture="{{false}}"
+           danmu-list="{{danmuList}}"
+           danmu-btn="{{false}}"
+           enable-danmu="{{true}}"
+           style='width:100%;height:100%;'
+           object-fit='{{cover}}' bindplay="videpPlay" bindended="videoEnded"> </video>
+
+
+    <view class='container-me'>
+
+        <!-- 喜欢收藏按钮 -->
+        <block>
+             <v-like style="width: 60px;height: 60px" bind:like="onLike" isVideo="{{true}}" like="{{likeStatus}}" count="{{likeCount}}" />
+        </block>
+
+        <!-- 评论按钮 -->
+        <image class="size-me" src='images/comments.png' style='margin-top:30rpx;' bindtap="leaveComment"></image>
+
+        <!-- 分享按钮 -->
+        <button open-type='share' plain='{{true}}' class=" shareButton">
+            <image class="size-me" src='images/share.png' style='margin-top:30rpx;' bindtap="shareMe"></image>
+        </button>
+    </view>
+
+    <view class='container-words'>
+        <!--<cover-view class='video-desc'>{{videoInfo.content}}</cover-view>-->
+        <!--<rich-text class="video-desc" nodes="{{videoInfo.content}}"></rich-text>-->
+    </view>
+
+
+</view>
+
+<view class="comment-all" wx:if="{{commentshow}}">
+    <scroll-view scroll-y="true" scroll-top="100" style="height:200px;">
+    <view class="comment">
+
+        <block wx:for="{{commentsList}}" wx:key="">
+            <view class='commentsItem-container'>
+                <image class="commentsItem-face" src='{{item.avatar}}'></image>
+                <view class="commentsItem-content-all">
+                    <view class="nicknameAndZan">
+                        <label class='nickname'>{{item.nickname}}</label>
+                    </view>
+                    <view class="content">
+                        <!--<template is="imgTplBak" data="{{item.comment}}"></template>-->
+                        <rich-text nodes="{{item.comment}}"></rich-text>
+                    </view>
+                </view>
+            </view>
+        </block>
+
+    </view>
+    <view class="saySthView">
+        <input name="commentContent" class="saySth" placeholder="{{placeholder}}" confirm-type="send"
+               bindconfirm="saveComment" value='{{contentValue}}'/>
+    </view>
+</scroll-view>
+</view>
+

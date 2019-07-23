@@ -1,0 +1,150 @@
+page{
+  height: 100%;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f6f6;
+}
+.test{
+  display: flex;
+  flex-direction: row;
+}
+.tt{
+  margin-top: 10rpx;
+}
+.title{
+  width:100%;
+  margin-top: 20rpx;
+  margin-left: 80rpx;
+  margin-bottom: 20rpx;
+}
+.textarea-wrp {
+  width: 100%;
+  margin-left: 8px;
+  padding: 0 25rpx;
+  background-color: #fff;
+}
+
+.mybutton{
+  width: 500rpx;
+  margin-top: 40rpx;
+  background-color: #07c160;
+  color: #fff;
+}
+.emoji{
+  width: 64rpx;
+  height: 64rpx;
+}
+.emotion{
+  width:56rpx;
+  height:56rpx;
+  line-height: 56rpx;
+  margin: 6px;
+}
+.emotionPanel{
+  width: 98%;
+}
+
+.middle {
+  width: 100%;
+  margin-left: 50rpx;
+  top: 460rpx;
+  font-size: 0;
+}
+
+.middle .middle-l {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+}
+
+.middle-r {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.dots-wrapper {
+  position: absolute;
+  top: 600rpx;
+  height: 30rpx;
+  line-height: 20rpx;
+  text-align: center;
+  width: 100%;
+}
+.dots-wrapper .dots {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 10rpx;
+  background: rgba(0, 255, 0, 0.5);
+  display: inline-block;
+  margin: 10rpx;
+  margin-top: 0;
+}
+.dots-wrapper .current {
+  width: 40rpx;
+  background: rgba(0,255,0,.8);
+}
+
+.comment{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f0;
+  padding-bottom: 80rpx;
+}
+
+.commentsItem-container{
+  display: flex;
+  flex-direction: row;
+  margin-top: 40rpx;
+
+}
+.commentsItem-face{
+  width: 76rpx;
+  height: 72rpx;
+  margin-left: 5px;
+}
+.commentsItem-content-all{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.commentsItem-content-all .nicknameAndZan{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.commentsItem-content-all .content{
+  margin-top: 15rpx;
+  margin-left: 20rpx;
+  max-width: 95%;
+  max-height: 240rpx;
+  line-height: 60rpx;
+  font-size: 32rpx;
+}
+.commentsItem-content-all .delete{
+  margin-top: 8rpx;
+  margin-left: 5rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 32rpx;
+  color: #043d88;
+}
+.commentsItem-content-all .nicknameAndZan .nickname{
+  margin-left: 15px;
+  color: #a1a1a1;
+
+}
+.commentsItem-content-all .nicknameAndZan .zan{
+  margin-right: 30rpx;
+}

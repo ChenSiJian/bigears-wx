@@ -1,0 +1,22 @@
+.container{
+    display:inline-flex;
+    flex-direction: row;
+    padding: 10rpx;
+    width:90rpx;
+}
+
+.container image{
+    width:52rpx;
+    height:45rpx;
+
+}
+
+.container text{
+    font-family: "PingFangSC-Thin";
+    font-size: 28rpx;
+    line-height: 28rpx;
+    color: #bbbbbb;
+    position: relative;
+    bottom: 0rpx;
+    left: 6rpx;
+}

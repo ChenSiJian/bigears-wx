@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="header">
+    <navigator url="/pages/search/search" class="box">
+      <image src="/images/search.png" />
+      <text>内容搜索</text>
+    </navigator>
+  </view>
+  <view class="cate-nav">
+    <scroll-view scroll-x="true" class="cate-nav-body" style="width: 750rpx;" scroll-left="{{scrollLeft}}">
+      <view wx:for="{{navList}}" class="item {{ id == item.id ? 'active' : ''}}" wx:key="id" data-id="{{item.id}}" data-name="{{item.name}}" data-index="{{index}}" bindtap="switchCate">
+        <view class="name">{{item.name}}</view>
+      </view>
+    </scroll-view>
+  </view>
+  <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}};">
+    <view class="cate-item">
+      <view class="like-container">
+        <view class="preview-container">
+          <block wx:for="{{classicsList}}" wx:key="">
+            <v-preview bindtapping="onJumpToDetail" data-index="{{index}}" class="preview" classic="{{item}}" />
+          </block>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

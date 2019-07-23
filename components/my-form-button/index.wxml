@@ -1,0 +1,5 @@
+<form bindsubmit="submitInfo" report-submit='true'>
+    <button form-type='{{formType}}' plain='{{true}}' class="container">
+        <slot name="img"></slot>
+    </button>
+</form>

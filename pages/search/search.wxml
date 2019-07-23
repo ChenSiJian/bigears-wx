@@ -1,0 +1,38 @@
+<view class="container">
+    <view class="header">
+        <view class="search-container">
+            <image class="icon" src="images/search.png" />
+            <input value="{{searchWord}}"  bindconfirm="onConfirm" placeholder-class='in-bar' placeholder='请输入搜索内容' confirm-type="search" class='bar' auto-focus="true" />
+            <image bindtap="onDelete" class="cancel-img" src="images/cancel.png" />
+        </view>
+        <view bindtap="onCancel" class='cancel'>取消</view>
+    </view>
+    <view>
+        <view class="history">
+            <view class="title">
+                <view class="chunk"></view>
+                <text>历史搜索</text>
+            </view>
+            <view class="tags">
+                <block wx:key="" wx:for="{{historyWords}}">
+                    <v-tag bind:tapping="onConfirm" text="{{item}}" />
+                </block>
+            </view>
+        </view>
+    </view>
+
+    <view class="preview-container">
+        <block wx:for="{{dataArray}}" wx:key="{{item.id}}">
+            <v-preview bind:tapping="onJumpToDetail" data-index="{{index}}" class="preview" classic="{{item}}" />
+        </block>
+    </view>
+    <!--<view class="books-container">
+        <block wx:for="{{dataArray}}" wx:key="{{item.id}}">
+            <v-book showLike="{{true}}" book="{{item}}" class="book" />
+        </block>
+    </view>-->
+
+    <v-loading class="loading-center" wx:if="{{loadingCenter}}"/>
+    <v-loading class="loading" wx:if="{{loading}}"/>
+    <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到下信息</text>
+</view>
