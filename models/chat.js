@@ -50,13 +50,12 @@ function fileUpload(filePath, name,data = {}) {
 }
 
 function  fetchUnReadMsg() {
-  //console.info('获取未读的聊天信息。。。。。')
+  if(!wx.getStorageSync('chatSnapshotList')){
+    let userInfo = wx.getStorageSync('userInfo')
+    socketApp.saveChatSnapshotWrap(userInfo.userId,'9527',socketApp.packageEnum.CHAT,
+        '', '', true)
+  }
   getUnReadMsg().then((res)=>{
-    if(!wx.getStorageSync('chatSnapshotList')){
-      let userInfo = wx.getStorageSync('userInfo')
-      socketApp.saveChatSnapshotWrap(userInfo.userId,'9527',socketApp.packageEnum.CHAT,
-          '', '', true)
-    }
     var unReadMsgList = res.data;
     var msgIds = ''
     // 1. 保存聊天记录到本地

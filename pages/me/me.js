@@ -55,7 +55,10 @@ Page({
         userInfo: userInfo,
         hasLogin: true
       })
-      this.getMyFavor(this.data.page, this.data.limit)
+      if(this.data.page ===1){
+        this.getMyFavor(this.data.page, this.data.limit)
+      }
+
     }
 
   },
@@ -203,6 +206,7 @@ Page({
         let index = event.currentTarget.dataset.index
         let classic = this.data.classicsList[index]
         var videoInfo = JSON.stringify(classic);
+        videoInfo = encodeURIComponent(videoInfo)
         toUrl = '/pages/videoinfo/videoinfo?videoInfo=' + videoInfo
         wx.navigateTo({
           url: toUrl

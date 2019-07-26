@@ -2,7 +2,7 @@ var classicModel = require('../../models/classic.js')
 var likeModel = require('../../models/like.js')
 var userModel = require('../../models/user.js')
 //import { newSocket } from '../../models/socket'
-
+var app = getApp()
 Page({
 
     properties:{
@@ -33,6 +33,11 @@ Page({
           type: options.type
         })
       }
+      userModel.checkLogin().then((res) =>{
+        app.globalData.hasLogin = true
+      }).catch((err)=>{
+        app.globalData.hasLogin = false
+      })
     },
 
     /**
@@ -64,24 +69,28 @@ Page({
       //console.info('cid='+cid)
       if(cid != ''){
         classicModel.getById(cid, type).then((res)=>{
-          this._getLikeStatus(res.data.id, res.data.type)
-          this._getUserInfo(res.data.userId)
           this.setData({
             classic: res.data,
             latest: classicModel.isLatest(res.data.index),
             first: classicModel.isFirst(res.data.index)
           })
+          //this._getLikeStatus(res.data.id, res.data.type)
+          this.settingLikeStatus(res.data.id,res.data.type)
+          this._getUserInfo(res.data.userId)
+
         })
       }else if(this.data.classic== null){
         classicModel.getLatest().then((res)=>{
           this.setData({
             classic: res.data
           })
-          this._getLikeStatus(res.data.id,res.data.type)
+          //this._getLikeStatus(res.data.id,res.data.type)
+          this.settingLikeStatus(res.data.id,res.data.type)
           this._getUserInfo(res.data.userId)
         })
       }else{
-        this._getLikeStatus(this.data.classic.id, this.data.classic.type)
+        //this._getLikeStatus(this.data.classic.id, this.data.classic.type)
+        this.settingLikeStatus(this.data.classic.id, this.data.classic.type)
       }
 
       /*wx.getSystemInfo({
@@ -173,6 +182,16 @@ Page({
         })
     },
 
+    settingLikeStatus: function (cid,type) {
+      if(app.globalData.hasLogin){
+        this._getLikeStatus(cid,type)
+      }else {
+        this.setData({
+          likeCount: this.data.classic.likeCounts,
+          likeStatus: false
+        })
+      }
+    },
     _getLikeStatus: function (artID, category) {
         likeModel.getClassicLikeStatus(artID, category).then((res)=>{
             this.setData({
@@ -189,6 +208,12 @@ Page({
         })
     },
     onJumpToDetail(){
+      if(!app.globalData.hasLogin){
+        wx.navigateTo({
+          url: '/pages/auth/login/login'
+        })
+        return
+      }
       let cid = this.data.classic.id
       let type = this.data.classic.type
       let toUrl = `/pages/classic-detail/classic-detail?cid=${cid}&type=${type}`
@@ -201,12 +226,15 @@ Page({
       }*/
     },
     onJumpToVideoPlay(){
-      //let cid = this.data.classic.id
-      //let type = this.data.classic.type
+      if(!app.globalData.hasLogin){
+        wx.navigateTo({
+          url: '/pages/auth/login/login'
+        })
+        return
+      }
       var videoInfo = JSON.stringify(this.data.classic);
       //console.info('videoInfoStr:'+videoInfo)
       videoInfo = encodeURIComponent(videoInfo)
-      //console.info('decodeURIComponent-----------videoInfoStr:'+videoInfo)
       let toUrl = '/pages/videoinfo/videoinfo?videoInfo=' + videoInfo
       wx.navigateTo({
         url: toUrl

@@ -21,6 +21,11 @@
         <image class='user_row_right' src='/images/goright.png'></image>
     </view>
     <view class='separate'></view>
+    <button open-type='feedback' type='primary' plain='{{true}}' class="user_row shareButton">
+        <view class='user_row_left'>意见反馈</view>
+        <image class='user_row_right' src='/images/goright.png'></image>
+    </button>
+    <view class='separate'></view>
 
 
     <view class="like-container">

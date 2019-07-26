@@ -16,14 +16,17 @@ Page({
         app.globalData.hasLogin = true
         //获取未读信息
         chatModel.fetchUnReadMsg()
-        wx.reLaunch({
-          url: '/pages/classic/classic'
-        })
+      })
+      wx.reLaunch({
+        url: '/pages/classic/classic'
       })
     }).catch(() =>{
       app.globalData.hasLogin = false
-      wx.navigateTo({
+      /*wx.navigateTo({
         url: '/pages/auth/login/login'
+      })*/
+      wx.reLaunch({
+        url: '/pages/classic/classic'
       })
     })
   }

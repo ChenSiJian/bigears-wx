@@ -4,7 +4,7 @@ var app = getApp()
 
 function request({url, data = {}, method = "GET", comtentType = "application/json"}) {
   return new Promise(function (resolve, reject) {
-    // console.info('url:' + url.toString())
+    //console.info('url:' + url.toString())
     wx.request({
       url: url,
       data: data,
@@ -26,14 +26,25 @@ function request({url, data = {}, method = "GET", comtentType = "application/jso
             }
             let currentPageUrl = util.getCurrentPageUrl()
             //console.info('currentPageUrl:'+util.getCurrentPageUrl())
-            if(currentPageUrl != 'pages/auth/login/login'){
+            if(!app.globalData.hasGotoLoginPage){
+              //console.info('跳转到login page。。。。')
+              app.globalData.hasGotoLoginPage = true
               // 切换到登录页面
               wx.navigateTo({
                 url: '/pages/auth/login/login'
               })
             }
+           /* if(currentPageUrl != 'pages/auth/login/login'){
+            }*/
 
           } else if(res.data.status == 607){
+            // 清除登录相关内容
+            try {
+              wx.removeStorageSync('userInfo')
+              wx.removeStorageSync('token')
+            } catch (e) {
+              // Do something when catch error
+            }
             wx.showToast({
               title: res.data.msg,
               icon: "none",

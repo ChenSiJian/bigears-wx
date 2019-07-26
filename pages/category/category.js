@@ -1,5 +1,6 @@
 var classicModel = require('../../models/classic.js')
 // pages/category/index.js
+var app = getApp()
 Page({
 
   /**
@@ -36,8 +37,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getCategoryInfo();
-    this.getClassicList(this.data.id,this.data.page,this.data.limit)
+    if(!app.globalData.hasLogin){
+      wx.navigateTo({
+        url: '/pages/auth/login/login'
+      })
+      return
+    }
+
   },
 
   /**
@@ -47,6 +53,13 @@ Page({
     wx.setNavigationBarTitle({
       title: "大耳朵一乐"
     })
+    if(app.globalData.hasLogin){
+      this.getCategoryInfo();
+      if(this.data.page === 1){
+        this.getClassicList(this.data.id,this.data.page,this.data.limit)
+      }
+    }
+
   },
 
   /**
@@ -107,11 +120,12 @@ Page({
     })
   },
   getClassicList: function (type,page,pageSize) {
-    wx.showLoading({
+    /*wx.showLoading({
       title: '请等待，加载中...',
-    });
+    });*/
     classicModel.getClassicList(type,page,pageSize).then((res) => {
-      wx.hideLoading();
+      //console.info('getting ClassicList.........')
+      //wx.hideLoading();
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
 

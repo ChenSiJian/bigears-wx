@@ -5,6 +5,8 @@ const emotion = require('../../utils/emotion')
 var classicModel = require('../../models/classic.js')
 var likeModel = require('../../models/like.js')
 var commentModel = require('../../models/comment.js')
+
+var app = getApp()
 Component({
   /**
    * 组件的属性列表
@@ -35,16 +37,28 @@ Component({
         })
       }
     })
-    this._getLikeStatus(this.properties.classic.id,this.properties.classic.type)
-    this.getDetailInfo()
-    this.setData({
-      pubtimeStr: this.properties.classic.pubtime.substr(0,10)
-    })
-    this.getCommentList(this.properties.classic.id,this.data.page,this.data.limit)
+    if(app.globalData.hasLogin){
+      this._getLikeStatus(this.properties.classic.id,this.properties.classic.type)
+      this.getDetailInfo()
+      this.setData({
+        pubtimeStr: this.properties.classic.pubtime.substr(0,10)
+      })
+      this.getCommentList(this.properties.classic.id,this.data.page,this.data.limit)
+    }else{
+      wx.navigateTo({
+        url: '/pages/auth/login/login'
+      })
+    }
+
   },
 
   pageLifetimes: {
     show: function () {
+      this._getLikeStatus(this.properties.classic.id,this.properties.classic.type)
+      this.getDetailInfo()
+      this.setData({
+        pubtimeStr: this.properties.classic.pubtime.substr(0,10)
+      })
       this.getCommentList(this.properties.classic.id,this.data.page,this.data.limit)
     }
   },

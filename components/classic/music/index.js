@@ -6,7 +6,7 @@ import {
 } from '../../../utils/lyric'
 var richTextParse = require('../../../utils/richTextParse/richText.js');
 const emotion = require('../../../utils/emotion')
-const mMgr = wx.getBackgroundAudioManager()
+var mMgr = wx.getBackgroundAudioManager()
 
 var app = getApp()
 Component({
@@ -59,7 +59,11 @@ Component({
   pageLifetimes: {
     show: function() {
       // 页面被展示
-      //console.info('classic组件所在的页面被展示时执行...')
+      this._recoverStatus()
+      this._monitorSwitch()
+    },
+    hide: function () {
+      //console.info('music组件所在的页面被yincang时执行...')
     }
   },
   /**
@@ -124,6 +128,12 @@ Component({
       //console.info('handleLyric-txt::'+this.data.playingLyric)
     },
     onPlay: function(event) {
+      if(!app.globalData.hasLogin){
+        wx.navigateTo({
+          url: '/pages/auth/login/login'
+        })
+        return
+      }
       //console.info('=======mMgr.duration:'+mMgr.duration)
       if (this.data.currentLyric) {
         this.data.currentLyric.togglePlay()
@@ -151,7 +161,7 @@ Component({
     },
     loop() {
       mMgr.src = app.globalData.currentMusicSrc
-      mMgr.title = 'test'
+      mMgr.title = 'gallop 很酷！'
       if(this.data.currentLyric){
         this.data.currentLyric.seek(0)
       }
@@ -191,12 +201,15 @@ Component({
 
     _monitorSwitch: function() {
       mMgr.onPlay(() => {
+        //console.info('music组件onPlay事件发生。。。。')
         this._recoverStatus()
       })
       mMgr.onPause(() => {
+        //console.info('music组件onPause事件发生。。。。')
         this._recoverStatus()
       })
       mMgr.onStop(() => {
+        //console.info('music组件onStop事件发生。。。。')
         this._recoverStatus()
       })
       mMgr.onEnded(() => {

@@ -115,7 +115,8 @@ function checkBigearsToken() {
 function checkLogin() {
     return new Promise(function (resolve, reject) {
         if (wx.getStorageSync('userInfo') && wx.getStorageSync('token')) {
-            checkSession().then(() => {
+            resolve(true)
+            /*checkSession().then(() => {
                 resolve(true)
             }).catch(() => {
               // 清除登录相关内容
@@ -126,9 +127,9 @@ function checkLogin() {
                 // Do something when catch error
               }
                 reject(false)
-            });
+            })*/
         } else {
-            console.info('user.js--getStorageSync userInfo and token is false')
+            //console.info('user.js--getStorageSync userInfo and token is false')
             reject(false)
         }
     })

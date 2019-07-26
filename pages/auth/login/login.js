@@ -1,4 +1,4 @@
-import {FriendUserInfo} from "../../../models/socketApp";
+//import {FriendUserInfo} from "../../../models/socketApp";
 var userModel = require('../../../models/user.js')
 import {showErrorToast} from '../../../utils/util.js'
 var chatModel = require('../../../models/chat.js')
@@ -25,7 +25,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+      app.globalData.hasGotoLoginPage = false
     },
 
     /**
@@ -76,7 +76,8 @@ Page({
         }
 
         userModel.checkLogin().then(()=>{
-            console.info('这是在login.js中调用的userModel.checkLogin')
+            //console.info('这是在login.js中调用的userModel.checkLogin')
+            app.globalData.hasLogin = true
             //this.fetchUnReadMsg()
             wx.navigateBack({
                 delta: 1
@@ -84,7 +85,7 @@ Page({
         }).catch(() => {
             userModel.loginByWeixin(e.detail.userInfo).then((res)=>{
                 app.globalData.hasLogin = true
-                //chatModel.fetchUnReadMsg()
+                chatModel.fetchUnReadMsg()
                 // 每次重新登入，删除classic 本地缓存
                 //this.clearMyClassicStorage()
                 wx.navigateBack({
@@ -94,7 +95,6 @@ Page({
                 app.globalData.hasLogin = false
                 showErrorToast('微信登录失败')
             })
-
         })
     },
     clearMyClassicStorage: function () {

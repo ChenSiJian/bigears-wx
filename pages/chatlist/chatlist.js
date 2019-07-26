@@ -18,20 +18,34 @@ Page({
   onLoad: function (options) {
     //var chatSnapshotList = wx.getStorageSync('chatSnapshotList')
     //初始化socket
-    newSocket()
+    if(app.globalData.hasLogin){
+      newSocket()
+    }
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    if(!app.globalData.hasLogin){
+      wx.navigateTo({
+        url: '/pages/auth/login/login'
+      })
+      return
+    }
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let chatSnapshotListTmp = wx.getStorageSync('chatSnapshotList')
+    if(!chatSnapshotListTmp){
+      let userInfo = wx.getStorageSync('userInfo')
+      socketApp.saveChatSnapshotWrap(userInfo.userId,'9527',socketApp.packageEnum.CHAT,
+          '', '', true)
+    }
     this.setData({
       list: wx.getStorageSync('chatSnapshotList')
     })

@@ -8,6 +8,7 @@ var likeModel = require('../../models/like.js')
 var classicModel = require('../../models/classic.js')
 
 const mMgr = wx.getBackgroundAudioManager()
+var app = getApp()
 
 const SEQUENCE_MODE = 1
 const RANDOM_MOD = 2
@@ -42,19 +43,31 @@ Component({
     likeStatus: false
   },
   attached: function () {
+    //console.info('into player组件 的 attached......')
     if (mMgr.paused != 'undefined' && !mMgr.paused){
       mMgr.stop()
       mMgr.src = "test"
       mMgr.title = "test"
 
     }
-    this._initLyric()
-    this._getLikeStatus(this.properties.classic.id,this.properties.classic.type)
+    if(app.globalData.hasLogin){
+      this._initLyric()
+      this._getLikeStatus(this.properties.classic.id,this.properties.classic.type)
+    }
     this._monitorSwitch()
   },
   detached: function(event) {
     // wx:if hidden
     mMgr.stop()
+  },
+  pageLifetimes: {
+    show: function() {
+      //console.info('player 组件中所在的页面被展示。。。。。')
+      if(app.globalData.hasLogin){
+        this._initLyric()
+        this._getLikeStatus(this.properties.classic.id,this.properties.classic.type)
+      }
+    }
   },
   //组件没有onshow方法
   /*onShow: function () {
@@ -126,6 +139,12 @@ Component({
       }
     },
     togglePlaying: function () {
+      if(!app.globalData.hasLogin){
+        wx.navigateTo({
+          url: '/pages/auth/login/login'
+        })
+        return
+      }
       if (this.data.currentLyric) {
         //this.data.currentLyric.seek(0)
         this.data.currentLyric.togglePlay()

@@ -10,6 +10,7 @@ App({
   },
   globalData: {
     hasLogin: false,
+    hasGotoLoginPage: false,
     //currentCid: '',
     //currentType: 0,
     currentMusicSrc: '',

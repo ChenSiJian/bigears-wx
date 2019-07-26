@@ -1,7 +1,8 @@
 var classicModel = require('../../models/classic.js')
-var likeModel = require('../../models/like.js')
+//var likeModel = require('../../models/like.js')
 var userModel = require('../../models/user.js')
 
+var app = getApp()
 Page({
 
   properties:{
@@ -28,6 +29,12 @@ Page({
     this.setData({
       cid: options.cid,
       type: options.type
+    })
+
+    userModel.checkLogin().then((res) =>{
+      app.globalData.hasLogin = true
+    }).catch((err)=>{
+      app.globalData.hasLogin = false
     })
   },
 

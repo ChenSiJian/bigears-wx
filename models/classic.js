@@ -165,8 +165,15 @@ function _setLatestIndex(index)
 
 function _getLatestIndex()
 {
-    const index = wx.getStorageSync('latest')
-    return index
+    let index = wx.getStorageSync('latest')
+    if(!index || index == ''){
+      getLatest().then((res)=>{
+        index = wx.getStorageSync('latest')
+        return index
+      })
+    }else{
+      return index
+    }
 }
 
 function _getKey(index)

@@ -35,6 +35,7 @@ Page({
     this.videoCtx = wx.createVideoContext("myVideo", this);
     // 获取上一个页面传入的参数
     let dataTmp = decodeURIComponent(options.videoInfo)
+    //console.info('videoInfo-dataTmp:'+dataTmp)
     var videoInfo = JSON.parse(dataTmp);
     this.getDetailInfo(videoInfo.id)
     this._getLikeStatus(videoInfo.id,videoInfo.type)
