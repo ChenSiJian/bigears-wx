@@ -1,7 +1,12 @@
 {
 	"description": "项目配置文件",
 	"packOptions": {
-		"ignore": []
+		"ignore": [
+			{
+				"type": "folder",
+				"value": "readme-images"
+			}
+		]
 	},
 	"setting": {
 		"urlCheck": true,
@@ -10,7 +15,7 @@
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
-		"uglifyFileName": true,
+		"uglifyFileName": false,
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",

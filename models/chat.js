@@ -52,7 +52,7 @@ function fileUpload(filePath, name,data = {}) {
 function  fetchUnReadMsg() {
   if(!wx.getStorageSync('chatSnapshotList')){
     let userInfo = wx.getStorageSync('userInfo')
-    socketApp.saveChatSnapshotWrap(userInfo.userId,'9527',socketApp.packageEnum.CHAT,
+    socketApp.saveChatSnapshotWrap(userInfo.userId,'9527',socketApp.packageEnum.TEXT,
         '', '', true)
   }
   getUnReadMsg().then((res)=>{

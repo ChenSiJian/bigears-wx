@@ -62,11 +62,19 @@ Component({
   },
   pageLifetimes: {
     show: function() {
-      //console.info('player 组件中所在的页面被展示。。。。。')
-      if(app.globalData.hasLogin){
-        this._initLyric()
-        this._getLikeStatus(this.properties.classic.id,this.properties.classic.type)
-      }
+      console.info('player 组件中所在的页面被展示。。。。。')
+      // if(app.globalData.hasLogin){
+      //   //this._initLyric()
+      //   //this._getLikeStatus(this.properties.classic.id,this.properties.classic.type)
+      // }
+      /*if(!mMgr.paused){
+        const currentTimeTmp = mMgr.currentTime
+        console.info('----currentTimeTmp:'+currentTimeTmp)
+        if (this.data.currentLyric) {
+          console.info('into currentLyric seek.....')
+          this.data.currentLyric.seek(currentTimeTmp * 1000)
+        }
+      }*/
     }
   },
   //组件没有onshow方法

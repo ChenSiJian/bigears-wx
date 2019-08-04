@@ -1,6 +1,7 @@
 var classicModel = require('../../models/classic.js')
 var likeModel = require('../../models/like.js')
 var userModel = require('../../models/user.js')
+const regeneratorRuntime = require('regenerator-runtime')
 //import { newSocket } from '../../models/socket'
 var app = getApp()
 Page({
@@ -33,18 +34,13 @@ Page({
           type: options.type
         })
       }
-      userModel.checkLogin().then((res) =>{
-        app.globalData.hasLogin = true
-      }).catch((err)=>{
-        app.globalData.hasLogin = false
-      })
+
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
       wx.setNavigationBarTitle({
         title: "大耳朵一乐"
       })
@@ -53,19 +49,21 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow:async function () {
+      if (!app.globalData.hasLogin && wx.getStorageSync('userInfo') && wx.getStorageSync('token')) {
+        await userModel.checkBigearsToken().then((res)=>{
+          app.globalData.hasLogin = true
+
+        }).catch(()=>{
+          app.globalData.hasLogin = false
+        })
+      }
       let cid = this.data.cid
       let type = this.data.type
       this.setData({
         cid: '',
         type: 0
       })
-      /*if(app.globalData.currentCid != '' && app.globalData.currentType > 0){
-        cid = app.globalData.currentCid
-        type = app.globalData.currentType
-        app.globalData.currentCid = ''
-        app.globalData.currentType = 0
-      }*/
       //console.info('cid='+cid)
       if(cid != ''){
         classicModel.getById(cid, type).then((res)=>{
@@ -226,7 +224,8 @@ Page({
       }*/
     },
     onJumpToVideoPlay(){
-      if(!app.globalData.hasLogin){
+      // 注释掉视频模块
+      /*if(!app.globalData.hasLogin){
         wx.navigateTo({
           url: '/pages/auth/login/login'
         })
@@ -238,7 +237,8 @@ Page({
       let toUrl = '/pages/videoinfo/videoinfo?videoInfo=' + videoInfo
       wx.navigateTo({
         url: toUrl
-      })
+      })*/
+
 
     }
 

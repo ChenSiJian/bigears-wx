@@ -1,0 +1,22 @@
+{
+  "name": "bigears-wx",
+  "version": "1.0.0",
+  "description": "bigears-yile",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gallop/bigears-wx.git"
+  },
+  "author": "gallop",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gallop/bigears-wx/issues"
+  },
+  "homepage": "https://github.com/gallop/bigears-wx#readme",
+  "dependencies": {
+    "regenerator-runtime": "^0.13.3"
+  }
+}

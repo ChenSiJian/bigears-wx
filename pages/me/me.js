@@ -203,6 +203,7 @@ Page({
           url: toUrl
         })
       }else{
+        //注释掉视频部分
         let index = event.currentTarget.dataset.index
         let classic = this.data.classicsList[index]
         var videoInfo = JSON.stringify(classic);
@@ -211,6 +212,12 @@ Page({
         wx.navigateTo({
           url: toUrl
         })
+
+        /*wx.showToast({
+          title: '腾讯不让播，请联系大耳朵获取体验版观看视频！',
+          icon: "none",
+          duration: 5000
+        })*/
       }
     }
   }

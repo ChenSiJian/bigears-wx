@@ -1,6 +1,7 @@
 var classicModel = require('../../models/classic.js')
 //var likeModel = require('../../models/like.js')
 var userModel = require('../../models/user.js')
+const regeneratorRuntime = require('regenerator-runtime')
 
 var app = getApp()
 Page({
@@ -30,12 +31,6 @@ Page({
       cid: options.cid,
       type: options.type
     })
-
-    userModel.checkLogin().then((res) =>{
-      app.globalData.hasLogin = true
-    }).catch((err)=>{
-      app.globalData.hasLogin = false
-    })
   },
 
   /**
@@ -48,7 +43,15 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow:async function () {
+    if (!app.globalData.hasLogin && wx.getStorageSync('userInfo') && wx.getStorageSync('token')) {
+      await userModel.checkBigearsToken().then((res)=>{
+        app.globalData.hasLogin = true
+
+      }).catch(()=>{
+        app.globalData.hasLogin = false
+      })
+    }
     wx.setNavigationBarTitle({
       title: "大耳朵一乐"
     })

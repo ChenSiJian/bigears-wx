@@ -24,16 +24,12 @@ function request({url, data = {}, method = "GET", comtentType = "application/jso
             } catch (e) {
               // Do something when catch error
             }
+            app.globalData.hasLogin = false
             let currentPageUrl = util.getCurrentPageUrl()
             //console.info('currentPageUrl:'+util.getCurrentPageUrl())
-            if(!app.globalData.hasGotoLoginPage){
-              //console.info('跳转到login page。。。。')
-              app.globalData.hasGotoLoginPage = true
-              // 切换到登录页面
-              wx.navigateTo({
-                url: '/pages/auth/login/login'
-              })
-            }
+            wx.navigateTo({
+              url: '/pages/auth/login/login'
+            })
            /* if(currentPageUrl != 'pages/auth/login/login'){
             }*/
 
@@ -45,16 +41,15 @@ function request({url, data = {}, method = "GET", comtentType = "application/jso
             } catch (e) {
               // Do something when catch error
             }
+            app.globalData.hasLogin = false
             wx.showToast({
               title: res.data.msg,
               icon: "none",
               duration: 8000
             })
 
-          } else if (res.data.status == 200) {
+          } else /*if (res.data.status == 200) */{
             resolve(res.data)
-          } else {
-            reject(res.data)
           }
         } else {
           reject(res.errMsg)

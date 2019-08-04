@@ -1,6 +1,6 @@
 // 以下是业务服务器API地址
-var WxApiRoot = 'https://m.mygallop.cn/bigears/wx/';
-var WSbasicUrl = 'wss://m.mygallop.cn:8091/ws'
+var WxApiRoot = 'https://m.xxx.cn/bigears/api/';
+var WSbasicUrl = 'wss://m.xxx.cn:xxx/ws'
 
 const apiUrl = {
     WebsocketUrl: WSbasicUrl + '',
